@@ -1,5 +1,5 @@
 class Solution {
-    //Time Complexity = O(n)
+    //Time Complexity = O(n)  => O(n-k) + O(k)
     public int maxSubarraySum(int[] arr, int k) {
         // Code here
         int curSum = 0;
