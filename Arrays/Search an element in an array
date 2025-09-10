@@ -5,18 +5,10 @@ import java.io.*;
 class Codechef
 {
     public static void findX(int[] ar, int X){
-        Arrays.sort(ar);
-        int st = 0, end = ar.length-1;
-        
-        while(st <= end){
-            int mid = st+(end-st)/2;
-            if(ar[mid] == X){
+        for(int i=0; i<ar.length; i++){
+            if(ar[i] == X){
                 System.out.println("YES");
                 return;
-            }else if(ar[mid] < X){
-                st = mid+1;
-            }else{
-                end = mid-1;
             }
         }
         
