@@ -1,0 +1,38 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+    public static void findX(int[] ar, int X){
+        Arrays.sort(ar);
+        int st = 0, end = ar.length-1;
+        
+        while(st <= end){
+            int mid = st+(end-st)/2;
+            if(ar[mid] == X){
+                System.out.println("YES");
+                return;
+            }else if(ar[mid] < X){
+                st = mid+1;
+            }else{
+                end = mid-1;
+            }
+        }
+        
+        System.out.println("NO");
+    }
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int X = sc.nextInt();
+        int[] ar = new int[N];
+        for(int i=0; i<N; i++){
+            ar[i] = sc.nextInt();
+        }
+        
+        findX(ar, X);
+	}
+}
