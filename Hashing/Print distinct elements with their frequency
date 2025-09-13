@@ -1,0 +1,19 @@
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        HashMap<Integer, Integer> map = new HashMap<>();
+        System.out.print("enter n: ");
+        int n = sc.nextInt();
+        int[] ar = new int[n];
+        for(int i=0; i<n; i++){
+            System.out.print("Enter ele:");
+            ar[i] = sc.nextInt();
+            map.put(ar[i], map.getOrDefault(ar[i], 0)+1);
+        }
+        
+        for(Map.Entry<Integer, Integer> entry: map.entrySet()){
+            System.out.println(entry.getKey() + ":  " + entry.getValue());
+        }
+    }
+}
