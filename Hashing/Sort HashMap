@@ -1,0 +1,23 @@
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        HashMap<Integer, Integer> map = new HashMap<>();
+        System.out.print("enter n: ");
+        int n = sc.nextInt();
+        int[] ar = new int[n];
+        for(int i=0; i<n; i++){
+            System.out.print("Enter ele:");
+            ar[i] = sc.nextInt();
+            map.put(ar[i], map.getOrDefault(ar[i], 0)+1);
+        }
+        
+        List<Map.Entry<Integer, Integer>> list = new ArrayList<>(map.entrySet());
+        Collections.sort(list, (a,b) -> (a.getValue().equals(b.getValue())) ? a.getKey().compareTo(b.getKey()) : b.getValue().compareTo(a.getValue()));
+        
+        for(Map.Entry<Integer, Integer> entry: list){
+            System.out.println(entry.getKey() + ":  " + entry.getValue());
+        }
+    }
+}
