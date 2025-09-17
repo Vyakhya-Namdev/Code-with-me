@@ -1,0 +1,44 @@
+import java.util.*;
+class Main {
+    public static void findPal(String string){
+        int n = string.length();
+        HashMap<Character, Integer> map = new HashMap<>();
+        for(int i=0; i<n; i++){
+            map.put(string.charAt(i), map.getOrDefault(string.charAt(i), 0)+1);
+        }
+        
+        int odd = 0;
+        for(Map.Entry<Character, Integer> entry: map.entrySet()){
+            if(entry.getValue() % 2 != 0) odd++;
+        }
+        
+        if(odd > 1){
+            System.out.println("-1");
+            return;
+        }
+        
+        char[] s = new char[n];
+        int i=0, j=n-1;
+        
+        for(Map.Entry<Character, Integer> entry: map.entrySet()){
+            char ch = entry.getKey();
+            int k = entry.getValue();
+            while(k >= 2){
+                s[i] = ch;
+                s[j] = ch;
+                i++;
+                j--;
+                k -= 2;
+            }
+            
+            if(k == 1) s[n/2] = ch;
+        }
+        
+        String ans = new String(s);
+        System.out.println("Palindrome: "+ ans);
+    }
+    public static void main(String[] args) {
+        String string = "AABCBACBACC";
+        findPal(string);
+    }
+}
