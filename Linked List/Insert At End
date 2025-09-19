@@ -1,0 +1,14 @@
+class Solution {
+    public Node insertAtEnd(Node head, int x) {
+        // code here
+        if(head == null){
+            return new Node(x);
+        }
+        Node cur = head;
+        while(cur.next != null){
+            cur = cur.next;
+        }
+        cur.next  = new Node(x);
+        return head;
+    }
+}
