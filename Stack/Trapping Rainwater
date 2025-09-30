@@ -1,0 +1,23 @@
+class Solution {
+    public int trap(int[] height) {
+        int n = height.length;
+        int water = 0;
+        Stack<Integer> st = new Stack<Integer>();
+
+        for(int i=0; i<n; i++){
+            while(!st.isEmpty() && height[i] > height[st.peek()]){
+                int bottom = st.pop();  //got valley between left and right height
+                
+                if(st.isEmpty()) break;
+
+                int left = st.peek();
+                int distance = i-left-1;   //i=> right height
+                int waterLevel = Math.min(height[i], height[left]) - height[bottom];
+                water += (distance*waterLevel);
+            }
+            st.push(i);
+        }
+
+        return water;
+    }
+}
