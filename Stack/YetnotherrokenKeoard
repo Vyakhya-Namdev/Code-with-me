@@ -1,0 +1,56 @@
+import java.util.*;
+class Main {
+    public static void removeCapital(String str1, Stack<Character> st1, Stack<Character> st2){
+        while(!st1.isEmpty()){
+            char ch = st1.pop();
+            if(Character.isUpperCase(ch)) break;
+            else st2.push(ch);
+        }
+        
+        while(!st2.isEmpty()){
+            st1.push(st2.pop());
+        }
+    }
+    
+    public static void removeSmaller(String str1, Stack<Character> st1, Stack<Character> st2){
+        while(!st1.isEmpty()){
+            char ch = st1.pop();
+            if(Character.isLowerCase(ch)) break;
+            else st2.push(ch);
+        }
+        
+        while(!st2.isEmpty()){
+            st1.push(st2.pop());
+        }
+    }
+    public static void yetnotherrokenKeoard(String str){
+        int n = str.length();
+        Stack<Character> st1 = new Stack<>();
+        Stack<Character> st2 = new Stack<>();
+        
+        for(int i=0; i<n; i++){
+            char ch = str.charAt(i);
+            if(ch == 'B'){
+                removeCapital(str, st1, st2);
+            }else if(ch == 'b'){
+                removeSmaller(str, st1, st2);
+            }else{
+                st1.push(ch);
+            }
+        }
+        
+        StringBuilder ans = new StringBuilder();
+        while(!st1.isEmpty()){
+            char ch = st1.pop();
+            ans.insert(0, ch);
+        }
+        
+        System.out.println(ans.toString());
+    }
+    public static void main(String[] args) {
+        // String str = "ARaBbbitBaby";
+        // String str = "YetAnotherBrokenKeyboard";
+        String str = "BbBB";
+        yetnotherrokenKeoard(str);
+    }
+}
