@@ -1,0 +1,28 @@
+/*
+// Representation of a node
+class Node {
+    int data;
+    Node next;
+    Node (int d) {
+       data = d;
+       next = null;
+    }
+};
+*/
+class Solution {
+    Node head = null;
+    public Node arrayToList(int arr[]) {
+        Node cur = head;
+        for(int num: arr){
+            Node newNode = new Node(num);
+            if(head == null){
+                head = newNode;
+                cur = head;
+            }else{
+                cur.next = newNode;
+                cur = cur.next;
+            }
+        }
+        return head;
+    }
+}
