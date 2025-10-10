@@ -1,0 +1,30 @@
+class Solution {
+    public int firstUniqChar(String s) {
+        int n = s.length();
+        int[] temp1 = new int[26];
+        int[] temp2 = new int[26];
+        Arrays.fill(temp1, -1);
+        Arrays.fill(temp2, -1);
+
+        for(int i=0; i<n; i++){
+            char ch = s.charAt(i);
+            if(temp1[ch-'a'] == -1){
+                temp1[ch-'a'] = i;
+            }else continue;
+        }
+
+        for(int i=n-1; i>=0; i--){
+            char ch = s.charAt(i);
+            if(temp2[ch-'a'] == -1){
+                temp2[ch-'a'] = i;
+            }else continue;
+        }
+
+        for(int i=0; i<n; i++){
+            char ch = s.charAt(i);
+            if(temp1[ch-'a'] == temp2[ch-'a']) return i;
+        }
+
+        return -1;
+    }
+}
