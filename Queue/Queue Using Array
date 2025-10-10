@@ -1,0 +1,54 @@
+class myQueue {
+    int[] queue;
+    int idx;
+    
+    public myQueue(int n) {
+        // Define Data Structures
+        queue = new int[n];
+        idx = -1;
+    }
+
+    public boolean isEmpty() {
+        // Check if queue is empty
+        if(idx == -1) return true;
+        return false;
+    }
+
+    public boolean isFull() {
+        // Check if queue is full
+        if(idx == queue.length-1) return true;
+        return false;
+    }
+
+    public void enqueue(int x) {
+        // Enqueue
+        if(!isFull()){
+            idx++;
+            queue[idx] = x;
+        }
+    }
+
+    public void dequeue() {
+        // Dequeue
+        if(isEmpty()) return;
+        int temp = queue[0];
+        for(int i=0; i<queue.length-1; i++){
+            queue[i] = queue[i+1];
+        }
+        idx--;
+    }
+
+    public int getFront() {
+        // Get front element
+        if(isEmpty()) return -1;
+        return queue[0];
+    }
+
+    public int getRear() {
+        // Get last element
+        if(idx >= 0){
+            return queue[idx];
+        }
+        return -1;
+    }
+}
