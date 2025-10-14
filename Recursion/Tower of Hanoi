@@ -1,0 +1,14 @@
+class Solution {
+    public int tow(int n, int from, int to, int aux){
+        if(n == 0) return 0;
+        int step = 0;
+        
+        step += tow(n-1, from, aux, to) ;
+        step++;
+        step += tow(n-1, aux, to, from) ;
+        return step;
+    }
+    public int towerOfHanoi(int n, int from, int to, int aux) {
+        return tow(n, from, to, aux);
+    }
+}
