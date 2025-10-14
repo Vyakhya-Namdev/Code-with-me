@@ -1,0 +1,17 @@
+class Solution {
+    public void powerSet(String s, int i, StringBuilder temp, List<String> ans){
+        if(i < 0 || i == s.length()) return;
+        
+        temp.append(s.charAt(i));
+        ans.add(temp.toString());
+        powerSet(s, i+1, temp, ans);
+        temp.deleteCharAt(temp.length()-1);
+        powerSet(s, i+1, temp, ans);
+    }
+    public List<String> AllPossibleStrings(String s) {
+        List<String> ans = new ArrayList<>();
+        powerSet(s, 0, new StringBuilder(), ans);
+        Collections.sort(ans);
+        return ans;
+    }
+}
