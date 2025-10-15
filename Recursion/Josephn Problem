@@ -1,0 +1,16 @@
+class Solution {
+    public int solve(int n, int k, int i, List<Integer> seating){
+        if(n == 1 || seating.size() == 1) return seating.get(0);
+        
+        i = (i+k-1)%seating.size();
+        seating.remove(i);
+        return solve(n-1,k,i,seating);
+    }
+    public int josephus(int n, int k) {
+        List<Integer> seating = new ArrayList<>();
+        for(int i=1; i<=n; i++){
+            seating.add(i);
+        }
+        return solve(n,k,0,seating);
+    }
+}
